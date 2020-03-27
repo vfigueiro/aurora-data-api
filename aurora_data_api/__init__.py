@@ -125,7 +125,7 @@ class AuroraDataAPICursor:
         # list: "arrayValue"
     }
     # functions to convert from python to parameter type
-    _py_type_converter_map = {uuid.UUID: str}
+    _py_type_converter_map = {uuid.UUID: str, datetime.date: str, datetime.datetime: str, datetime.timedelta: str}
 
     def __init__(self, client=None, dbname=None, aurora_cluster_arn=None, secret_arn=None, transaction_id=None):
         self.arraysize = 1000
@@ -357,4 +357,3 @@ def connect(aurora_cluster_arn=None, secret_arn=None, rds_data_client=None, data
             charset=None):
     return AuroraDataAPIClient(dbname=database, aurora_cluster_arn=aurora_cluster_arn,
                                secret_arn=secret_arn, rds_data_client=rds_data_client, charset=charset
-      
